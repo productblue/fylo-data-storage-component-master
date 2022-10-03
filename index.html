@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  
+  <title>Frontend Mentor | Fylo data storage component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+    *{
+      margin: 0;
+      padding: 0;
+    }
+
+    body{
+      background-image: url('images/bg-mobile.png');
+      background-repeat: no-repeat;
+      background-size: auto;
+      background-position: center;
+      color: hsl(243, 100%, 93%);
+      font-family: 'Raleway', sans-serif;
+      background-color: hsl(229, 57%, 11%);
+      font-size: 14px;
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+    }
+
+    .container{
+      width: 85%;
+
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+
+    .cards{
+
+      background-color: hsl(228, 56%, 26%);
+      padding: 2.5em;
+      border-radius: 1em;
+      
+    }
+
+    .card1{
+      border-top-right-radius: 6em;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5em;
+    }
+
+    .buttons{
+      display: flex;
+      gap: 1em;
+    }
+
+
+
+    .button{
+      border: 1px solid hsl(229, 57%, 11%);
+      border-radius: .8em;
+      background-color: hsl(229, 57%, 11%);
+      width: 4em;
+      height: 4em;
+    }
+
+    .button:hover{
+      cursor: pointer;
+    }
+
+    .card2{
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      position: relative;
+    }
+
+    .card2 p:nth-child(1){
+      text-align: center;
+    }
+
+    .card2 .capacity{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+    }
+
+    .card2 .capacity p:nth-child(1){
+      justify-self: start;
+    }
+
+    .card2 .capacity p:nth-child(2){
+      justify-self: end;
+    }
+
+    .card2 p span{
+      font-weight: 700;
+    }
+
+    .capacity{
+      font-weight: 700;
+    }
+
+    .progressBarTotal{
+      background-color: hsl(229, 57%, 11%);
+      border-radius: 10px;
+      height: 1.5em;
+      position: relative;
+      display: flex;
+      align-items: center; 
+      padding-left: 0.2em;
+    }
+
+    .progress{
+      background-image: linear-gradient(to right, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+      height: 70%;
+      border-radius: 10px;
+      width: calc((815/1000)*100%);
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .whiteCircle{
+      background: white;
+      height: 80%;
+      border-radius: 50%;
+      margin-right: 0.2em;
+      width: 0.85em;
+      align-self: center;
+    }
+
+    .remainingCapacity{
+      background-color: white;
+      padding: 1em;
+      border-radius: 1em;
+      color: hsl(229, 7%, 55%);
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      font-weight: 700;
+    }
+
+    .remainingCapacity p span{
+      font-size: 2.5em;
+      color: hsl(229, 57%, 11%);
+    }
+    
+    .remainingCapacity p{
+      text-align: center;
+
+    }
+
+    .arrow{
+      background-color: white;
+      position: absolute;
+      width: 2em;
+      height: 2em;
+      rotate: 45deg;
+      bottom: 0;
+      right: 0;
+      transform: translate(10%, 60%);      
+    }
+
+    @media screen and (min-width: 376px) {
+      body {
+        background-image: url('images/bg-desktop.png');
+        background-position: right bottom;
+        background-size: auto 100vh;
+      }
+    }
+
+    @media screen and (min-width: 700px) {
+      body {
+        background-position: right bottom;
+        background-size: 100vw 50vh;
+      }
+
+      .container{
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 2em;
+      }
+
+      .card1{
+        padding-right: 7em;
+      }
+
+      .card2{
+        height: 90%;
+        width: 100%;
+      }
+
+      .remainingCapacity{
+        left: auto;
+        right: 0;
+        top: 0;
+        bottom: auto;
+        transform: translate(-23%, -60%);
+      }
+
+      .card2 p:nth-child(1){
+      align-self: flex-start;
+      text-align: start;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="cards card1">
+      <div class="logo">
+        <img src="images\logo.svg" alt="Fylo Logo">
+      </div>
+      <div class="buttons">
+        <button class="doc button"><img src="images\icon-document.svg" alt=""></button>
+        <button class="folder button"><img src="images\icon-folder.svg" alt=""></button>
+        <button class="upload button"><img src="images\icon-upload.svg" alt=""></button>
+      </div>
+    </div>
+  
+    <div class="cards card2">
+      <p>You’ve used <span>815 GB</span> of your storage</p>
+  
+      <div class="progressBarTotal">
+        <div class="progress">
+          <div class="whiteCircle"></div>
+        </div>
+      </div>
+  
+      <div class="capacity">
+        <p>0 GB</p>
+        <p>1000 GB</p>
+      </div>
+
+      <div class="remainingCapacity">
+
+        <p><span>185</span> GB LEFT</p>
+        <div class="arrow"></div>
+      </div>
+
+    </div>
+  </div>
+
+  
+
+  <!-- <footer>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">Your Name Here</a>.
+    </div>
+  </footer> -->
+</body>
+</html>
